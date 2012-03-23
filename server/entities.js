@@ -43,7 +43,7 @@ var getContact = function (id, cb) {
 
 var addImage = function (id, image, cb) {
 	ContactModel.update({_id : id}, { image : image}, {}, function (err, numAffected) {
-		cb (err, getContact(id);
+		getContact(id, cb);
 		});
 }
 
@@ -55,5 +55,5 @@ module.exports = {
 	createContact : createContact,
 	getPhonebook : getPhonebook,
 	getContact : getContact,
-	getContacts : getcontacts,
+	getContacts : getContacts,
 };
