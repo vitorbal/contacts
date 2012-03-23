@@ -29,6 +29,7 @@ var createContact = function (first, last, phone, email, note) {
 	var c = new ContactModel({firstname: first, lastname:last, phone: phone, email:email,note:note});
 	c.save();
 	pb.contact.push(c);
+	return c;
 };
 
 module.exports = { 
