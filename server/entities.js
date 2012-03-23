@@ -32,8 +32,17 @@ var createContact = function (first, last, phone, email, note) {
 	return c;
 };
 
+var getPhonebook = function (id, cb) {
+	PhonebookModel.find({_id : id}, cb);
+}
+
+var getContact = function (id, cb) {
+	ContactModel.find({_id : id}, cb);
+}
+
 module.exports = { 
-	PhonebookModel : PhonebookModel,
 	ContactModel : ContactModel,
-	createContact : createContact
+	createContact : createContact,
+	getPhonebook : getPhonebook,
+	getContact : getContact
 };
