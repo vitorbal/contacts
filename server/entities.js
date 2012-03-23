@@ -19,12 +19,6 @@ var Phonebook = new Schema ({
 var PhonebookModel  = mongoose.model ('Phonebook', Phonebook);
 var ContactModel = mongoose.model ('Contact', Contact);
 
-var pb = new PhonebookModel ({
-	name: "test",
-	password : "123"
-	});
-pb.save();
-
 
 var createContact = function (first, last, phone, email, note) {
 	var c = new ContactModel({firstname: first, lastname:last, phone: phone, email:email,note:note});
@@ -51,9 +45,20 @@ var getContacts = function (cb) {
 	ContactModel.find({}, cb);
 }
 
+var getPhonebooks = function (cb) {
+	PhonebookModel.find({}, function (err, docs) {
+		var res = new Array();
+		for (var i = 0; i < docs.length ; i++) {
+			res.push(docs[i]._id);
+		};
+		cb (err, res);
+	});
+}
+
 module.exports = { 
 	createContact : createContact,
 	getPhonebook : getPhonebook,
 	getContact : getContact,
 	getContacts : getContacts,
+	getPhonebooks : getPhonebooks
 };
