@@ -1,14 +1,18 @@
 <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
 <h2> Image upload </h2>
 
-<form method="post" action="http://localhost:8080/contacts/image">
+<form method="post" action="http://localhost:8080/upload">
 	<table>
 		<tr>
 			<td>
 				Choose the image file: 
 			</td>
 			<td>
-			<input type="file" name="image"/>
+			<input type="file" name="image" id ="image" enctype="multipart/form-data">
 			</td>
 		</tr>
 		<tr>
@@ -23,5 +27,5 @@
 	
 	<input type="submit" name="submit" value="submit"/>
 </form>
-
+</body>
 </html>
