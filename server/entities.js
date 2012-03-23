@@ -8,12 +8,13 @@ var Contact = new Schema ({
 	phone : String,
 	email : String,
 	note : String,
-	});
+	image : Buffer
+});
 var Phonebook = new Schema ({
 	name : String,
 	password : String,
 	contact : [Contact]
-	});
+});
 
 var PhonebookModel  = mongoose.model ('Phonebook', Phonebook);
 var ContactModel = mongoose.model ('Contact', Contact);
@@ -33,11 +34,17 @@ var createContact = function (first, last, phone, email, note) {
 };
 
 var getPhonebook = function (id, cb) {
-	PhonebookModel.find({_id : id}, cb);
+	PhonebookModel.findById(id, cb);
 }
 
 var getContact = function (id, cb) {
-	ContactModel.find({_id : id}, cb);
+	ContactModel.findById(id, cb);
+}
+
+var addImage = function (id, image, cb) {
+	ContactModel.update({_id : id}, { image : image}, {}, function (err, numAffected) {
+		cb (err, getContact(id);
+		});
 }
 
 module.exports = { 
