@@ -63,11 +63,21 @@ var createPhonebook = function (name, password, cb) {
 	return pb;
 }
 
+var deleteContact = function (id) {
+	getContact(id, function (err, doc) {
+	try  {
+		doc.remove();
+		} catch (e) {}
+	});
+}
+
 module.exports = { 
 	createPhonebook : createPhonebook,
 	createContact : createContact,
 	getPhonebook : getPhonebook,
 	getContact : getContact,
 	getContacts : getContacts,
-	getPhonebooks : getPhonebooks
+	getPhonebooks : getPhonebooks,
+	deleteContact : deleteContact,
+
 };

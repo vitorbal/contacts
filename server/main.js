@@ -26,4 +26,9 @@ server.router.map(function () {
 			res.sendJSONP(d.callback, d);
 		});
 	});
+
+	this.del(/^contact\/([0-9a-f]+)$/).bind(function(req,res,id) {
+		entities.deleteContact(id);
+		res.send(200, {}, "Deleted successfully :) ");
+	});
 });
