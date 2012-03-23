@@ -5,14 +5,14 @@
 <body>
 <h2> Image upload </h2>
 
-<form method="post" action="http://localhost:8080/upload">
+<form method="post" action="http://localhost:8081/upload" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>
 				Choose the image file: 
 			</td>
 			<td>
-			<input type="file" name="image" id ="image" enctype="multipart/form-data">
+			<input type="file" name="image" id ="image" multiple="multiple">
 			</td>
 		</tr>
 		<tr>

@@ -11,10 +11,6 @@ require('http').createServer(function (request, response) {
 	if (request.url == '/upload' && request.method.toLowerCase() == 'post') {
     // parse a file upload
 	var form = new formidable.IncomingForm();
-	
-	  
-
-	
     form.parse(request, function(err, fields, files) {
 
 	if( err ){
