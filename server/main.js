@@ -3,7 +3,7 @@ var server = require("./server");
 
 server.router.map(function () {
 	this.get(/^contacts$/).bind(function (req, res) {
-		entities.ContactModel.find({}, function (err, docs) {
+		entities.getContacts(function (err, docs) {
 			res.send(200, {}, docs);
 		});
 	});

@@ -47,9 +47,13 @@ var addImage = function (id, image, cb) {
 		});
 }
 
+var getContacts = function (cb) {
+	ContactModel.find({}, cb);
+}
+
 module.exports = { 
-	ContactModel : ContactModel,
 	createContact : createContact,
 	getPhonebook : getPhonebook,
-	getContact : getContact
+	getContact : getContact,
+	getContacts : getcontacts,
 };
