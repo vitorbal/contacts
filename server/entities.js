@@ -49,7 +49,7 @@ var getPhonebooks = function (cb) {
 	PhonebookModel.find({}, function (err, docs) {
 		var res = new Array();
 		for (var i = 0; i < docs.length ; i++) {
-			res.push(docs[i]._id);
+			res.push({_id : docs[i]._id, name : docs[i].name});
 		};
 		cb (err, res);
 	});
