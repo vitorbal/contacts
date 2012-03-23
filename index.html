@@ -41,7 +41,11 @@
   <!-- Templates -->
 
   <script type="text/template" id="tpl-contact-list-item">
-        <a href='#contact/<%= id %>'><%= name %></a>
+    <a href='#contact/<%= _id %>'><%= firstname %> <%= lastname %></a>
+  </script>
+
+  <script type="text/template" id="tpl-contact-detail">
+    <%= firstname %> <%= lastname %>
   </script>
   
   <!-- Application Logic -->

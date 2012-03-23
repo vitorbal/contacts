@@ -1,9 +1,10 @@
+Backbone.Model.prototype.idAttribute = "_id";
 // Models
 window.Contact = Backbone.Model.extend();
 
 window.ContactCollection = Backbone.Collection.extend({
     model:Contact,
-    url:"contact_model.json"
+    url:"http://localhost:8080/contacts"
 });
 
 // Views
@@ -36,19 +37,36 @@ window.ContactListItemView = Backbone.View.extend({
 
 });
 
+window.ContactDetailView = Backbone.View.extend({
+
+    template:_.template($('#tpl-contact-detail').html()),
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    }
+
+});
+
 // Router
 var AppRouter = Backbone.Router.extend({
 
     routes:{
-        "":"contactList",
+        "":"contactListPath",
+        "contact/:id": "contactDetailPath"
     },
 
-    contactList:function () {
+    contactListPath:function () {
         this.contactList = new ContactCollection();
         this.contactListView = new ContactListView({model:this.contactList});
-        this.contactList.fetch();
-        //this.contactList.reset(cd)
+        this.contactList.fetch({crossDomain: true, dataType: 'jsonp'});
         $('#content').html(this.contactListView.render().el);
+    },
+
+    contactDetailPath: function (id) {
+        this.contact = this.contactList.get(id);
+        this.contactDetailView = new ContactDetailView({model:this.contact});
+        $('#content').html(this.contactDetailView.render().el);
     }
 });
 
