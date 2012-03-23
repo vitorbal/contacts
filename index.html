@@ -4,64 +4,48 @@
 <head>
   <meta charset="utf-8">
   <title>Phonebook Contacts</title>
-  <link rel="stylesheet" href="stylesheets/contacts.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style type="text/css" media="screen">
+    body{
+        padding-top:60px;
+    }
+  </style>
 </head>
 
 <body>
-  
-  <div id="contactsapp">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" >Phonebook Contacts!</a>
+            </div>
+        </div>
+    </div>
     
-    <header>
-      <h1>Phonebook</h1>
-      <input id="new-todo" type="text" placeholder="What needs to be done?">
-    </header>
-
-    <section id="main">
-      <input id="toggle-all" type="checkbox">
-      <label for="toggle-all">Mark all as complete</label>
-      <ul id="todo-list"></ul>
-    </section>
-
-    <footer>
-      <a id="clear-completed">Clear completed</a>
-      <div id="todo-count"></div>
-    </footer>
-    
-  </div>
-  
-  <div id="instructions">
-    Double-click to edit a todo.
-  </div>
-  
-  <div id="credits">
-    Created by
-    <br />
-    <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>.
-    <br />Rewritten by: <a href="http://addyosmani.github.com/todomvc">TodoMVC</a>.
-  </div>
-
-  <script src="js/jquery-1.7.2.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div id="content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  <script src="js/jquery-1.7.2.min.js"></script>
   <script src="js/underscore-min.js"></script>
   <script src="js/backbone-min.js"></script>
-  <script src="contacts.js"></script>
+  
+  <!-- Data Mockups-->
+  
 
   <!-- Templates -->
 
-  <script type="text/template" id="item-template">
-    <div class="view">
-      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
-      <label><%= title %></label>
-      <a class="destroy"></a>
-    </div>
-    <input class="edit" type="text" value="<%= title %>" />
+  <script type="text/template" id="tpl-contact-list-item">
+        <a href='#contact/<%= id %>'><%= name %></a>
   </script>
-
-  <script type="text/template" id="stats-template">
-    <% if (done) { %>
-      <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
-    <% } %>
-    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
-  </script>
+  
+  <!-- Application Logic -->
+  <script src="js/main.js"></script>
 
   </body>
 </html>
